@@ -1,0 +1,8 @@
+
+apiTitle: clean-car-api
+splitSpec: true
+codeSamples: true
+swaggerUI: true
+travis: true
+repo: bvasegh/clean-car
+oasVersion: 3.0.0
