@@ -1,6 +1,7 @@
 package main
 
 import (
+	"fmt"
 	"github.com/go-chi/chi"
 	"io/ioutil"
 	"log"
@@ -33,14 +34,17 @@ func main() {
 
 func CarClient(r chi.Router) {
 
-	r.Get("/", func(w http.ResponseWriter, r *http.Request) {
+	r.Get("/api", func(w http.ResponseWriter, r *http.Request) {
 		log.Printf("GET door status")
 		w.Write([]byte("get door status."))
 	})
 
-	r.Get("/car", func(w http.ResponseWriter, r *http.Request) {
+	r.Get("/api/car/{carId}", func(w http.ResponseWriter, r *http.Request) {
 		log.Printf("GET car")
-		request, _ := http.NewRequest("GET", "https://api.mercedes-benz.com/vehicledata_tryout/v1/vehicles/WDB111111ZZZ22222/containers/vehiclestatus", nil)
+		carId := chi.URLParam(r, "carId")
+		request, _ := http.NewRequest("GET",
+			fmt.Sprintf("https://api.mercedes-benz.com/vehicledata_tryout/v1/vehicles/%s/containers/vehiclestatus", carId),
+			nil)
 		request.Header.Set("Authorization", "Bearer 4c4c444c-v123-4123-s123-4c4c444c4c44")
 
 		client := &http.Client{}

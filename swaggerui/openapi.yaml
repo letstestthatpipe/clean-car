@@ -1,0 +1,66 @@
+openapi: 3.0.0
+servers:
+  - url: 'http://localhost:3333/api'
+    description: local clean car api
+  - url: 'http://cleancarurl.com/api'
+    description: production clean car api
+info:
+  description: clean car api
+  version: 1.0.0
+  title: Clean Car API
+  termsOfService: ''
+  contact:
+    email: ''
+  license:
+    name: MIT
+    url: WDB111111ZZZ22222
+tags: []
+paths:
+  '/car/{carId}':
+    get:
+      tags:
+        - car
+      summary: Get car status by id
+      description: ''
+      operationId: getCarById
+      parameters:
+        - name: carId
+          in: path
+          description: id of the car
+          required: true
+          schema:
+            type: string
+            default: WDB111111ZZZ22222
+      responses:
+        '200':
+          description: Successful car status
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Car'
+        '400':
+          description: Invalid ID supplied
+        '404':
+          description: Car not found
+components:
+  schemas:
+    Car:
+      type: array
+      items:
+        type: object
+        properties:
+          feature:
+            description: car feature and its value
+            type: object
+            properties:
+              value:
+                type: string
+                description: value of the feature
+              timestamp:
+                type: integer
+                description: value of value change
+
+  securitySchemes: {}
+  links: {}
+  callbacks: {}
+security: []
