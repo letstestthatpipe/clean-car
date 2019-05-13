@@ -1,0 +1,10 @@
+
+GET https://api.mercedes-benz.com/vehicledata_tryout/v1/vehicles/WDB111111ZZZ22222/containers/vehiclestatus
+Authorization: Bearer 4c4c444c-v123-4123-s123-4c4c444c4c44
+
+###
+
+GET https://api.mercedes-benz.com/vehicledata_tryout/v1/vehicles/WDB111111ZZZ22222/containers/vehiclestatus
+Authorization: Bearer 4c4c444c-v123-4123-s123-4c4c444c4c44
+
+###
