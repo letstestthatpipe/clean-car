@@ -16,10 +16,13 @@ func DummyApi(w http.ResponseWriter, r *http.Request) {
 
 func GetCarStatus(w http.ResponseWriter, r *http.Request) {
 	log.Printf("GET car")
+	log.Printf("request was %v", r.URL.String())
 	carId := chi.URLParam(r, "carId")
+
 	request, _ := http.NewRequest("GET",
 		fmt.Sprintf("https://api.mercedes-benz.com/vehicledata_tryout/v1/vehicles/%s/containers/vehiclestatus", carId),
 		nil)
+
 	request.Header.Set("Authorization", "Bearer 4c4c444c-v123-4123-s123-4c4c444c4c44")
 
 	client := &http.Client{}
