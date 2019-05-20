@@ -10,7 +10,7 @@
           "instances": 1,
           "mem": 512,
           "domain": {
-            "uri": "clean-car.sloppy.zone",
+            "uri": "$domain",
             "redirectHttps": true
           },
           "ssl": true,
