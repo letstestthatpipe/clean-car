@@ -2,7 +2,7 @@ openapi: 3.0.0
 servers:
   - url: 'http://localhost:3333/api'
     description: local clean car api
-  - url: 'http://cleancarurl.com/api'
+  - url: 'https://clean-car.sloppy.zone/api'
     description: production clean car api
 info:
   description: clean car api
