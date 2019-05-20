@@ -48,6 +48,6 @@ func GetCarStatus(w http.ResponseWriter, r *http.Request) {
 	w.Write(body)
 }
 
-func redirectToSwagger(w http.ResponseWriter, r *http.Request) {
+func RedirectToSwagger(w http.ResponseWriter, r *http.Request) {
 	http.Redirect(w, r, "swagger-ui", http.StatusSeeOther)
 }

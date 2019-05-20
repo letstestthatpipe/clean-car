@@ -20,4 +20,6 @@ EXPOSE 3333
 COPY --from=builder /opt/app/clean-car /opt/
 COPY swaggerui/ /opt/swaggerui/
 
+WORKDIR /opt
+
 CMD ["/opt/clean-car"]
