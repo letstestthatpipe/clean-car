@@ -23,6 +23,7 @@ func main() {
 	filesDir := filepath.Join(workDir, "swaggerui")
 
 	infra.FileServer(r, "/swagger-ui", http.Dir(filesDir))
+	r.Get("/", handlers.redirectToSwagger)
 	r.Get("/api/dummy", handlers.DummyApi)
 	r.Get("/api/car/{carId}", handlers.GetCarStatus)
 
