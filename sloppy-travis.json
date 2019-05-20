@@ -1,0 +1,31 @@
+{
+  "project": "clean-car",
+  "services": [
+    {
+      "id": "apps",
+      "apps": [
+        {
+          "id": "cleancar",
+          "image": "$docker_image",
+          "instances": 1,
+          "mem": 512,
+          "domain": {
+            "uri": "clean-car.sloppy.zone",
+            "redirectHttps": true
+          },
+          "ssl": true,
+          "port_mappings": [
+            {
+              "container_port": 3333
+            }
+          ],
+          "volumes": [
+          ],
+          "health_checks": [
+          ],
+          "logging": null
+        }
+      ]
+    }
+  ]
+}
