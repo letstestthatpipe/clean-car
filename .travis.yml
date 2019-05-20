@@ -3,8 +3,8 @@ language: go
 go:
   - 1.12.x
 env:
-  - DOCKER_IMAGE=vbasem/clean-car
-  - DOMAIN=
+  - DOCKER_IMAGE="vbasem/clean-car"
+  - DOMAIN="clean-car.sloppy.zone"
 
 services:
   - docker

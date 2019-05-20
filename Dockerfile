@@ -17,6 +17,8 @@ FROM alpine
 
 EXPOSE 3333
 
+RUN apk add --no-cache ca-certificates
+
 COPY --from=builder /opt/app/clean-car /opt/
 COPY swaggerui/ /opt/swaggerui/
 
