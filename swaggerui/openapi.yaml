@@ -1,8 +1,8 @@
 openapi: 3.0.0
 servers:
-  - url: 'http://localhost:3333/api'
+  - url: 'http://localhost:3333'
     description: local clean car api
-  - url: 'https://clean-car.sloppy.zone/api'
+  - url: 'https://clean-car.sloppy.zone'
     description: production clean car api
 info:
   description: clean car api
@@ -16,7 +16,7 @@ info:
     url: WDB111111ZZZ22222
 tags: []
 paths:
-  '/car/{carId}':
+  '/api/car/{carId}':
     get:
       tags:
         - car
@@ -42,8 +42,33 @@ paths:
           description: Invalid ID supplied
         '404':
           description: Car not found
+  '/api/car/togglelocks':
+    get:
+      tags:
+        - car
+      summary: locks or unlocks a car
+      description: ''
+      operationId: toggleCarLocks
+      parameters: []
+      responses:
+        '200':
+          description: Successful initiated lock toggle
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ToggleStatus'
+        '400':
+          description: Toggle failed
+        '404':
+          description: Car not found
 components:
   schemas:
+    ToggleStatus:
+      type: object
+      properties:
+        status:
+          type: string
+          enum: [INITIATED]
     Car:
       type: array
       items:

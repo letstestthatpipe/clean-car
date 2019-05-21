@@ -22,7 +22,7 @@
           "env": {
             "CLIENT_SECRET": "dummy",
             "CLIENT_ID": "dummy",
-            "CALLBACK_URL": "http://localhost:3333"
+            "CALLBACK_URL": "http://localhost:3333/api/car/togglelocks"
           },
           "volumes": [
           ],

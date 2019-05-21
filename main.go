@@ -28,10 +28,10 @@ func main() {
 
 	r.Get("/api/dummy", handlers.DummyApi)
 	r.Get("/api/car/{carId}", handlers.GetCarStatus)
+	r.Get("/api/car/togglelocks", handlers.HandleToggleCarDoors)
 
 	r.Get("/", handleMain)
 	r.Get("/login", infra.HandleOauthLogin)
-	r.Get("/callback", handlers.HandleToggleCarDoors)
 
 	http.ListenAndServe(":3333", r)
 }

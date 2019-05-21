@@ -12,7 +12,7 @@ go build
 ### To run the tests
 ```editorconfig
 go test
-```
+``` 
 
 ### To deploy on sloppy.io
 1. create an account under sloppy.io
