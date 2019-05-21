@@ -8,6 +8,7 @@ import (
 	"net/http"
 )
 
+
 func DummyApi(w http.ResponseWriter, r *http.Request) {
 	log.Printf("GET door status")
 	w.Write([]byte("get car status."))
