@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/vbasem/clean-car.png)](https://travis-ci.org/vbasem/clean-car)
+
 # Clean car API project
 
 ### API documentation under /swagger-ui
