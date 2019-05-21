@@ -21,6 +21,7 @@ RUN apk add --no-cache ca-certificates
 
 COPY --from=builder /opt/app/clean-car /opt/
 COPY swaggerui/ /opt/swaggerui/
+COPY webapp/ /opt/webapp/
 
 WORKDIR /opt
 

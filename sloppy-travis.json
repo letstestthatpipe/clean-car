@@ -19,6 +19,11 @@
               "container_port": 3333
             }
           ],
+          "env": {
+            "CLIENT_SECRET": "$client_secret",
+            "CLIENT_ID": "$client_id",
+            "CALLBACK_URL": "$callback_url"
+          },
           "volumes": [
           ],
           "health_checks": [

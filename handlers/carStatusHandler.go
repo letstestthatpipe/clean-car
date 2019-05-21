@@ -47,7 +47,3 @@ func GetCarStatus(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "application/json")
 	w.Write(body)
 }
-
-func RedirectToSwagger(w http.ResponseWriter, r *http.Request) {
-	http.Redirect(w, r, "swagger-ui", http.StatusSeeOther)
-}

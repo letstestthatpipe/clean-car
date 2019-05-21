@@ -2,8 +2,6 @@ language: go
 
 go:
   - 1.12.x
-env:
-  - DOCKER_IMAGE="vbasem/clean-car" DOMAIN="clean-car.sloppy.zone"
 
 services:
   - docker
@@ -20,4 +18,11 @@ script:
 after_success:
   - curl -k -L https://files.sloppy.io/sloppy-`uname -s`-`uname -m` > sloppy
   - chmod +x sloppy
-  - ./sloppy change -v docker_image:"$DOCKER_IMAGE:$TRAVIS_COMMIT" -v domain:"$DOMAIN" sloppy-travis.json
+  - |
+    ./sloppy change \
+      -v docker_image:"$DOCKER_IMAGE:$TRAVIS_COMMIT" \
+      -v domain:"$DOMAIN" \
+      -v callback_url:"$CALLBACK_URL" \
+      -v client_secret:"$OAUTH_CLIENT_SECRET" \
+      -v client_id:"$OAUTH_CLIENT_ID" \
+      sloppy-travis.json

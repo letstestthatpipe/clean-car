@@ -19,6 +19,11 @@
               "container_port": 3333
             }
           ],
+          "env": {
+            "CLIENT_SECRET": "dummy",
+            "CLIENT_ID": "dummy",
+            "CALLBACK_URL": "http://localhost:3333"
+          },
           "volumes": [
           ],
           "health_checks": [
