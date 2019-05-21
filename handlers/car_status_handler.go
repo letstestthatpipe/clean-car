@@ -1,33 +1,27 @@
 package handlers
 
 import (
-	"fmt"
-	"github.com/go-chi/chi"
-	"io/ioutil"
 	"log"
 	"net/http"
+
+	"github.com/go-chi/chi"
 )
 
-
-func DummyApi(w http.ResponseWriter, r *http.Request) {
+func (CarStatus *CarStatus) DummyApi(w http.ResponseWriter, r *http.Request) {
 	log.Printf("GET door status")
 	w.Write([]byte("get car status."))
 }
 
+type CarStatus struct {
+	Gateway CarGateway
+}
 
-func GetCarStatus(w http.ResponseWriter, r *http.Request) {
-	log.Printf("GET car")
+func (CarStatus *CarStatus) GetCarStatus(w http.ResponseWriter, r *http.Request) {
+	log.Printf("GET car status")
 	log.Printf("request was %v", r.URL.String())
 	carId := chi.URLParam(r, "carId")
 
-	request, _ := http.NewRequest("GET",
-		fmt.Sprintf("https://api.mercedes-benz.com/vehicledata_tryout/v1/vehicles/%s/containers/vehiclestatus", carId),
-		nil)
-
-	request.Header.Set("Authorization", "Bearer 4c4c444c-v123-4123-s123-4c4c444c4c44")
-
-	client := &http.Client{}
-	response, err := client.Do(request)
+	response, err := CarStatus.Gateway.GetCarStatus(carId)
 
 	if err != nil {
 		log.Printf("something went wrong with the GET car: %s", err)
@@ -35,16 +29,8 @@ func GetCarStatus(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	body, err := ioutil.ReadAll(response.Body)
-
-	if err != nil {
-		log.Printf("something went wrong with the GET car: %s", err)
-		http.Error(w, err.Error(), http.StatusInternalServerError)
-		return
-	}
-
-	log.Printf("CAR status response was: %s", body)
+	log.Printf("CAR status response was: %s", response)
 
 	w.Header().Set("Content-Type", "application/json")
-	w.Write(body)
+	w.Write([]byte(response))
 }

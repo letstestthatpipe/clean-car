@@ -21,12 +21,14 @@ func main() {
 		log.Panicf("got an error: %s", err)
 	}
 
+	carStatusHandler := handlers.CarStatus{Gateway: &handlers.MercedesCarGateway{}}
+
 	swaggerDir := filepath.Join(workDir, "swaggerui")
 
 	infra.FileServer(r, "/swagger-ui", http.Dir(swaggerDir))
 
-	r.Get("/api/dummy", handlers.DummyApi)
-	r.Get("/api/car/{carId}", handlers.GetCarStatus)
+	r.Get("/api/dummy", carStatusHandler.DummyApi)
+	r.Get("/api/car/{carId}", carStatusHandler.GetCarStatus)
 
 	http.ListenAndServe(":3333", r)
 }
