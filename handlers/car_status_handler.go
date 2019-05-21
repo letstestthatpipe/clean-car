@@ -2,7 +2,6 @@ package handlers
 
 import (
 	"github.com/go-chi/chi"
-	"github.com/vbasem/clean-car/infra"
 	"log"
 	"net/http"
 )
@@ -13,7 +12,7 @@ func (CarStatus *CarStatus) DummyApi(w http.ResponseWriter, r *http.Request) {
 }
 
 type CarStatus struct {
-	Gateway infra.CarGateway
+	Gateway CarGateway
 }
 
 func (CarStatus *CarStatus) GetCarStatus(w http.ResponseWriter, r *http.Request) {

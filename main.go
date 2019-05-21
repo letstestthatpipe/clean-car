@@ -26,8 +26,7 @@ func main() {
 	infra.FileServer(r, "/swagger-ui", http.Dir(swaggerDir))
 	infra.FileServer(r, "/webapp", http.Dir(webappDir))
 
-
-	carStatusHandler := handlers.CarStatus{Gateway: &infra.MercedesCarGateway{}}
+	carStatusHandler := handlers.CarStatus{Gateway: &handlers.MercedesCarGateway{}}
 
 	r.Get("/api/dummy", carStatusHandler.DummyApi)
 	r.Get("/api/car/{carId}", carStatusHandler.GetCarStatus)
