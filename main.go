@@ -1,7 +1,9 @@
 package main
 
 import (
+	chiprom "github.com/766b/chi-prometheus"
 	"github.com/go-chi/chi"
+	"github.com/prometheus/client_golang/prometheus/promhttp"
 	"github.com/vbasem/clean-car/handlers"
 	"github.com/vbasem/clean-car/infra"
 	"log"
@@ -12,7 +14,9 @@ import (
 
 func main() {
 	log.Printf("starting clean car")
+	middleware := chiprom.NewMiddleware("cleancar")
 	r := chi.NewRouter()
+	r.Use(middleware)
 
 	workDir, err := os.Getwd()
 
@@ -35,6 +39,7 @@ func main() {
 	r.Get("/", handleMain)
 	r.Get("/login", infra.HandleOauthLogin)
 
+	r.Handle("/metrics", promhttp.Handler())
 	http.ListenAndServe(":3333", r)
 }
 
