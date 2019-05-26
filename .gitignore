@@ -1,4 +1,5 @@
 *.exe
 .idea
 clean-car
+vendor/
 
